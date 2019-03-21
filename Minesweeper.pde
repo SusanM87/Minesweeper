@@ -1,4 +1,3 @@
-
 import de.bezier.guido.*;            
 //Declare and initialize NUM_ROWS and NUM_COLS = 20
 public final static int NUM_ROWS = 20;
@@ -26,6 +25,7 @@ void setup ()
     
     setBombs();
 }
+
 public void setBombs()
 {
     int ranRow;
@@ -48,8 +48,8 @@ public void draw ()
     background( 0 );
     if(isWon())
         displayWinningMessage();
-
 }
+
 public boolean isWon()
 {
     int counter = 0;
@@ -65,9 +65,14 @@ public boolean isWon()
         return true;
     return false;
 }
+
 public void displayLosingMessage()
 {
-
+    for(int r = 0; r < buttons.length; r++)
+    {
+        for(int c = 0; c < buttons[r].length; c++)
+            buttons[r][c].setLabel("");
+    }
     buttons[9][8].setLabel("Y");
     buttons[9][9].setLabel("O");
     buttons[9][10].setLabel("U");
@@ -75,11 +80,16 @@ public void displayLosingMessage()
     buttons[10][8].setLabel("O");
     buttons[10][9].setLabel("S");
     buttons[10][10].setLabel("E");
-
-
+    noLoop();
 }
+
 public void displayWinningMessage()
 {
+    for(int r = 0; r < buttons.length; r++)
+    {
+        for(int c = 0; c < buttons[r].length; c++)
+            buttons[r][c].setLabel("");
+    }
     buttons[9][8].setLabel("Y");
     buttons[9][9].setLabel("O");
     buttons[9][10].setLabel("U");
@@ -87,6 +97,7 @@ public void displayWinningMessage()
     buttons[10][9].setLabel("I");
     buttons[10][10].setLabel("N");
     buttons[10][11].setLabel("!");
+    noLoop();
 }
 
 public class MSButton
@@ -216,5 +227,3 @@ public class MSButton
         return numBombs;
     }
 }
-
-
